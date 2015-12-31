@@ -1,4 +1,4 @@
-import solutions.ClosestBinarySearchTreeValueII;
+import solutions.AlienDictionary;
 
 /**
  * Created by PPlovboiledfish on 10/31/15.
@@ -6,7 +6,7 @@ import solutions.ClosestBinarySearchTreeValueII;
 public class Test {
     static public void main(String[] args) {
         long startTime = System.nanoTime();
-        ClosestBinarySearchTreeValueII.Test.randomTest();
+        AlienDictionary.Test.randomTest();
         System.out.println( "Total Time: " + (System.nanoTime() - startTime) / 1000000 + "ms");
     }
 }
