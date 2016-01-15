@@ -28,7 +28,7 @@ public class CountOfSmallerNumbersAfterSelfBIT {
                 IntStream.of(nums).boxed().sorted().collect(Collectors.toCollection(ArrayList<Integer>::new));
         return IntStream.of(nums).boxed()
                 .map(num -> Collections.binarySearch(sorted, num) + 1)
-                .collect(Collectors.toList());
+                .collect(Collectors.toCollection(ArrayList<Integer>::new));
     }
 
     private void _insert(int[] BIT, int val) {
