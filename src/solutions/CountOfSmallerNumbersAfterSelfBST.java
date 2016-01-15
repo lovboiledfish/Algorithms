@@ -1,6 +1,7 @@
 package solutions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,10 +18,11 @@ public class CountOfSmallerNumbersAfterSelfBST {
 
     public List<Integer> countSmaller(int[] nums) {
         BSTNode bst = new BSTNode();
-        List<Integer> ret = new ArrayList<>();
-        IntStream.range(0, nums.length).forEach(i -> ret.add(0));
-        IntStream.range(0, nums.length).map(i -> nums.length - i - 1).forEach(i -> ret.set(i, _insert(bst, nums[i])));
-        return ret;
+        Integer[] ret = new Integer[nums.length];
+        IntStream.range(0, nums.length)
+                .map(i -> nums.length - i - 1)
+                .forEach(i -> ret[i] = _insert(bst, nums[i]));
+        return Arrays.asList(ret);
     }
 
     private int _insert(BSTNode root, int val) {
