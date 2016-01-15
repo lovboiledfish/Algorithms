@@ -4,7 +4,7 @@ package solutions.utils;
  * Created by PPlovboiledfish on 1/10/16.
  */
 public class SegmentTreeNode {
-    public int start, end, max;
+    public int start, end, max, count;
     public SegmentTreeNode left, right;
 
     public SegmentTreeNode(int start, int end) {
