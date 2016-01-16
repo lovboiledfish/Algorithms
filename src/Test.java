@@ -1,4 +1,4 @@
-import solutions.TrappingRainWaterII;
+import solutions.CountOfRangeSum;
 
 /**
  * Created by PPlovboiledfish on 10/31/15.
@@ -6,7 +6,7 @@ import solutions.TrappingRainWaterII;
 public class Test {
     static public void main(String[] args) {
         long startTime = System.nanoTime();
-        TrappingRainWaterII.Test.randomTest();
+        CountOfRangeSum.Test.randomTest();
         System.out.println( "Total Time: " + (System.nanoTime() - startTime) / 1000000 + "ms");
     }
 }
