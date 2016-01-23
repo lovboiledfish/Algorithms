@@ -18,15 +18,14 @@ public class LongestPalindromicSubstring {
         T[s.length() * 2] = '#';
         int[] P = new int[T.length];
 
-        int max = 1, maxIdx = 1, L = 0, R = 2;
-        P[1] = 1;
-        for (int i = 2; i < T.length; ++i) {
+        int max = 0, maxIdx = 0, L = 0, R = 0;
+        for (int i = 0; i < T.length; ++i) {
             if (i > R) {
                 R = i;
                 L = i;
             }
             int iBar = L + R - i;
-            if (iBar != i && P[iBar] < R - i) {
+            if (iBar >= 0 && iBar < T.length && iBar != i && P[iBar] < R - i) {
                 P[i] = P[iBar];
             } else {
                 int j = (iBar != i)? R - i + 1 : 1;
