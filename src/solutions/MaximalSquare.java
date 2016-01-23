@@ -1,5 +1,6 @@
 package solutions;
 
+import com.sun.tools.javac.util.Assert;
 import solutions.utils.MyMath;
 
 /**
@@ -34,9 +35,8 @@ public class MaximalSquare {
         static private MaximalSquare _solution = new MaximalSquare();
 
         static public void test(char[][] matrix, int ans) {
-            int ret = new MaximalSquare().maximalSquare(matrix);
-            System.out.println(ret);
-            com.sun.tools.javac.util.Assert.check(ret == ans);
+            int ret = _solution.maximalSquare(matrix);
+            Assert.check(ret == ans);
         }
 
         static public void randomTest() {
