@@ -1,7 +1,6 @@
 package solutions;
 
 import com.sun.tools.javac.util.Assert;
-import solutions.utils.MyMath;
 
 /**
  * Created by PPlovboiledfish on 10/31/15.
@@ -11,24 +10,21 @@ public class MaximalSquare {
         if (matrix == null || matrix.length == 0)
             return 0;
 
-        int glodbalMaxSquare = 0;
-        int[][] maxSquare = new int[matrix.length][matrix[0].length];
-
-        for (int i = 0; i < matrix.length; ++i) {
-            for (int j= 0; j < matrix[0].length; ++j) {
-                if (matrix[i][j] != '1')
-                    maxSquare[i][j] = 0;
-                else {
-                    if (i == 0 || j == 0)
-                        maxSquare[i][j] = 1;
-                    else
-                        maxSquare[i][j] = MyMath.min(maxSquare[i - 1][j - 1], maxSquare[i][j - 1], maxSquare[i - 1][j]) + 1;
+        int[][] dp = new int[2][matrix[0].length + 1];
+        int maxArea = 0;
+        int cur = 0;
+        for (char[] aMatrix : matrix) {
+            for (int j = 0; j < matrix[0].length; ++j) {
+                if (aMatrix[j] == '1') {
+                    dp[cur][j + 1] = Math.min(dp[cur][j], Math.min(dp[1 - cur][j], dp[1 - cur][j + 1])) + 1;
+                    maxArea = Math.max(maxArea, dp[cur][j + 1]);
+                } else {
+                    dp[cur][j + 1] = 0;
                 }
-                glodbalMaxSquare = (glodbalMaxSquare > maxSquare[i][j])? glodbalMaxSquare : maxSquare[i][j];
             }
+            cur = 1 - cur;
         }
-
-        return glodbalMaxSquare * glodbalMaxSquare;
+        return maxArea * maxArea;
     }
 
     static public class Test {
