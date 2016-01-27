@@ -10,25 +10,20 @@ public class MinimumSizeSubarraySum {
      * @return: an integer representing the minimum size of subarray
      */
     public int minimumSize(int[] nums, int s) {
-        if (nums == null || nums.length < 1)
-            return -1;
-
-        int l = 0, r = 0, sum = nums[0];
-        int minSize = Integer.MAX_VALUE;
-        while (l < nums.length && r < nums.length) {
-            if (sum >= s)
-                minSize = Math.min(minSize, r - l + 1);
-
-            if (sum <= s) {
-                ++r;
-                if (r < nums.length)
-                    sum += nums[r];
-            } else {
-                sum -= nums[l++];
-                if (l > r)
-                    r = l;
+        int minLength = Integer.MAX_VALUE;
+        if (nums != null && nums.length > 0) {
+            int sum = 0;
+            int slow = 0;
+            for (int fast = 0; fast < nums.length; ++fast) {
+                sum += nums[fast];
+                if (sum >= s) {
+                    for(; slow <= fast && sum >= s; ++slow) {
+                        sum -= nums[slow];
+                    }
+                    minLength = Math.min(minLength, fast - slow + 2);
+                }
             }
         }
-        return minSize > nums.length ? -1 : minSize;
+        return (minLength == Integer.MAX_VALUE) ? 0 : minLength;
     }
 }
