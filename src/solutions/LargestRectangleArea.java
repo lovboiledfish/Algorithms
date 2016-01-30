@@ -10,24 +10,20 @@ import java.util.Stack;
  */
 public class LargestRectangleArea {
     public int largestRectangleArea(int[] height) {
+        if (height == null || height.length == 0)
+            return 0;
+
         Stack<Integer> stack = new Stack<Integer>();
         int maxArea = 0;
-
-        int i;
-        for (i = 0; i < height.length; ++i) {
-            if (stack.empty() || height[i] > height[stack.peek()])
-                stack.push(i);
-            else {
-                int tmp = stack.pop();
-                maxArea = Math.max(maxArea, height[tmp]*(stack.empty()? i : i-stack.peek()-1));
-                i--;
+        for (int i = 0; i <= height.length; ++i) {
+            int h = (i == height.length) ? -1 : height[i];
+            while (!stack.isEmpty() && height[stack.peek()] > h) {
+                int top = stack.pop();
+                int margin = stack.isEmpty() ? -1 : stack.peek();
+                maxArea = Math.max(maxArea, (i - margin - 1) * height[top]);
             }
+            stack.push(i);
         }
-        while (!stack.empty()) {
-            int tmp = stack.pop();
-            maxArea = Math.max(maxArea, height[tmp]*(stack.empty()? i : i-stack.peek()-1));
-        }
-
         return maxArea;
     }
 
