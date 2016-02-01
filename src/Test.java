@@ -1,4 +1,4 @@
-import solutions.RemoveInvalidParentheses;
+import solutions.SubarraySumII;
 
 /**
  * Created by PPlovboiledfish on 10/31/15.
@@ -6,7 +6,7 @@ import solutions.RemoveInvalidParentheses;
 public class Test {
     static public void main(String[] args) {
         long startTime = System.nanoTime();
-        RemoveInvalidParentheses.Test.randomTest();
+        SubarraySumII.Test.randomTest();
         System.out.println( "Total Time: " + (System.nanoTime() - startTime) / 1000000 + "ms");
     }
 }

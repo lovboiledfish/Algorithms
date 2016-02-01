@@ -11,7 +11,7 @@ import org.json.JSONArray;
 /**
  * Created by feiyi.zhan on 1/27/16.
  */
-public class ContiuousSubarraySumII {
+public class ContinuousSubarraySumII {
 	/**
 	 * @param A an integer array
 	 * @return  A list of integers includes the index of the first number and the index of the last number
@@ -55,7 +55,7 @@ public class ContiuousSubarraySumII {
 	}
 
 	static public class Test {
-		static private ContiuousSubarraySumII _solution = new ContiuousSubarraySumII();
+		static private ContinuousSubarraySumII _solution = new ContinuousSubarraySumII();
 
 		static public void test(int[] A) {
 			_solution.continuousSubarraySumII(A).forEach(System.out::println);
