@@ -1,4 +1,4 @@
-import solutions.PostOfficeProblem;
+import solutions.CopyBooks;
 
 /**
  * Created by PPlovboiledfish on 10/31/15.
@@ -6,7 +6,7 @@ import solutions.PostOfficeProblem;
 public class Test {
     static public void main(String[] args) {
         long startTime = System.nanoTime();
-        PostOfficeProblem.Test.randomTest();
+        CopyBooks.Test.randomTest();
         System.out.println( "Total Time: " + (System.nanoTime() - startTime) / 1000000 + "ms");
     }
 }
