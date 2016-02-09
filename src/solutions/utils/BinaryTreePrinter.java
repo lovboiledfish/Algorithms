@@ -43,21 +43,21 @@ public class BinaryTreePrinter {
         System.out.println("");
 
         for (int i = 1; i <= endgeLines; i++) {
-            for (int j = 0; j < nodes.size(); j++) {
+            for (TreeNode node : nodes) {
                 BinaryTreePrinter.printWhitespaces(firstSpaces - i);
-                if (nodes.get(j) == null) {
+                if (node == null) {
                     BinaryTreePrinter.printWhitespaces(endgeLines + endgeLines + i + 1);
                     continue;
                 }
 
-                if (nodes.get(j).left != null)
+                if (node.left != null)
                     System.out.print("/");
                 else
                     BinaryTreePrinter.printWhitespaces(1);
 
                 BinaryTreePrinter.printWhitespaces(i + i - 1);
 
-                if (nodes.get(j).right != null)
+                if (node.right != null)
                     System.out.print("\\");
                 else
                     BinaryTreePrinter.printWhitespaces(1);
