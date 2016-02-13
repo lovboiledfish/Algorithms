@@ -1,4 +1,4 @@
-import solutions.CourseScheduleII;
+import solutions.StringChain;
 
 /**
  * Created by PPlovboiledfish on 10/31/15.
@@ -6,7 +6,7 @@ import solutions.CourseScheduleII;
 public class Test {
     static public void main(String[] args) {
         long startTime = System.nanoTime();
-        CourseScheduleII.Test.randomTest();
+        StringChain.Test.randomTest();
         System.out.println( "Total Time: " + (System.nanoTime() - startTime) / 1000000 + "ms");
     }
 }
