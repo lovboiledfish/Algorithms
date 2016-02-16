@@ -29,6 +29,10 @@ public class LockFreeQueue<T> {
 		tail = new AtomicReference<>(dummy);
 	}
 
+	public boolean empty() {
+		return head.get().next.get() == null;
+	}
+
 	public void enqueue(T elem) {
 		LinkedListNode<T> node = new LinkedListNode<>(elem);
 		LinkedListNode<T> prevTail = tail.get();
