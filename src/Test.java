@@ -1,4 +1,4 @@
-import solutions.ShortestCodeSequence;
+import solutions.RecoverQueue;
 
 /**
  * Created by PPlovboiledfish on 10/31/15.
@@ -6,7 +6,7 @@ import solutions.ShortestCodeSequence;
 public class Test {
     static public void main(String[] args) {
         long startTime = System.nanoTime();
-        ShortestCodeSequence.Test.randomTest();
+        RecoverQueue.Test.randomTest();
         System.out.println( "Total Time: " + (System.nanoTime() - startTime) / 1000000 + "ms");
     }
 }
