@@ -1,4 +1,4 @@
-import solutions.RecoverQueue;
+import solutions.AmicablePair;
 
 /**
  * Created by PPlovboiledfish on 10/31/15.
@@ -6,7 +6,7 @@ import solutions.RecoverQueue;
 public class Test {
     static public void main(String[] args) {
         long startTime = System.nanoTime();
-        RecoverQueue.Test.randomTest();
+        AmicablePair.Test.randomTest();
         System.out.println( "Total Time: " + (System.nanoTime() - startTime) / 1000000 + "ms");
     }
 }
