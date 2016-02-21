@@ -1,4 +1,4 @@
-import solutions.AmicablePair;
+import solutions.FourSum;
 
 /**
  * Created by PPlovboiledfish on 10/31/15.
@@ -6,7 +6,7 @@ import solutions.AmicablePair;
 public class Test {
     static public void main(String[] args) {
         long startTime = System.nanoTime();
-        AmicablePair.Test.randomTest();
+        FourSum.Test.randomTest();
         System.out.println( "Total Time: " + (System.nanoTime() - startTime) / 1000000 + "ms");
     }
 }
