@@ -1,4 +1,4 @@
-import solutions.WoodCut;
+import solutions.BinaryRepresentation;
 
 /**
  * Created by PPlovboiledfish on 10/31/15.
@@ -6,7 +6,7 @@ import solutions.WoodCut;
 public class Test {
     static public void main(String[] args) {
         long startTime = System.nanoTime();
-        WoodCut.Test.randomTest();
+        BinaryRepresentation.Test.randomTest();
         System.out.println( "Total Time: " + (System.nanoTime() - startTime) / 1000000 + "ms");
     }
 }
