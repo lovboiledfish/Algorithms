@@ -7,51 +7,57 @@ import solutions.utils.TreeNode;
  * Created by PPlovboiledfish on 2/8/16.
  */
 public class SerializeAndDeserializeBinaryTree {
-
-    // Encodes a tree to a single string.
+    /**
+     * This method will be invoked first, you should design your own algorithm
+     * to serialize a binary tree which denote by a root node to a string which
+     * can be easily deserialized by your own "deserialize" method later.
+     */
     public String serialize(TreeNode root) {
+        StringBuilder sb = new StringBuilder();
+        _serialize(root, sb);
+        return sb.toString();
+    }
+
+    private void _serialize(TreeNode root, StringBuilder sb) {
         if (root == null) {
-            return "#,";
-        }
-        return root.val + "," + serialize(root.left) + serialize(root.right);
-    }
-
-    class Holder {
-        TreeNode node;
-        int end;
-
-        public Holder(TreeNode n, int e) {
-            node = n;
-            end = e;
-        }
-    }
-
-    // Decodes your encoded data to tree.
-    public TreeNode deserialize(String data) {
-        if (data == null) {
-            return null;
+            sb.append("#,");
         } else {
-            return _deserialize(data, 0).node;
+            sb.append(root.val);
+            sb.append(",");
+            _serialize(root.left, sb);
+            _serialize(root.right, sb);
         }
     }
 
-    private Holder _deserialize(String data, int start) {
-        if (start < data.length()) {
-            if (data.charAt(start) == '#') {
-                return new Holder(null, start + 1);
-            }
-            int end = start;
-            while (end < data.length() && data.charAt(end) != ',') {
+    /**
+     * This method will be invoked second, the argument data is what exactly
+     * you serialized at method "serialize", that means the data is not given by
+     * system, it's given by your own serialize method. So the format of data is
+     * designed by yourself, and deserialize it here as you serialize it in
+     * "serialize" method.
+     */
+    public TreeNode deserialize(String data) {
+        TreeNode dummy = new TreeNode(-1);
+        _deserialize(dummy, true, data, 0);
+        return dummy.left;
+    }
+
+    private int _deserialize(TreeNode root, boolean left, String data, int start) {
+        if (start < data.length() && data.charAt(start) != '#') {
+            int end = start + 1;
+            while (data.charAt(end) != ',') {
                 ++end;
             }
             TreeNode node = new TreeNode(Integer.parseInt(data.substring(start, end)));
-            Holder left = _deserialize(data, end + 1);
-            Holder right = _deserialize(data, left.end + 1);
-            node.left = left.node;
-            node.right = right.node;
-            return new Holder(node, right.end);
+            if (left) {
+                root.left = node;
+            } else {
+                root.right = node;
+            }
+            int deserialized = _deserialize(node, true, data, end + 1);
+            return _deserialize(node, false, data, deserialized + 1);
         }
-        return new Holder(null, -1);
+        return start + 1;
     }
 
     static public class Test {
