@@ -15,58 +15,53 @@ public class Permutations {
 	public List<List<Integer>> permute(int[] nums) {
 		List<List<Integer>> res = new ArrayList<>();
 		if (nums != null && nums.length > 0) {
-			int size = nums.length;
-			Integer[] arr = new Integer[size];
+			Integer[] arr = new Integer[nums.length];
+			Arrays.fill(arr, Integer.MIN_VALUE);
+
 			int factor = 1;
-			for (int i = 0; i < size; ++i) {
-				arr[i] = nums[i];
-				factor *= (i + 1);
+			int cnt = nums.length;
+			while (cnt > 0) {
+				factor *= cnt;
+				--cnt;
 			}
-			while (factor > 0) {
+			for (int i = 0; i < factor; ++i) {
 				res.add(new ArrayList<>(Arrays.asList(arr)));
-				nextPermutation(arr);
-				--factor;
+			}
+
+			cnt = nums.length;
+			while (cnt > 0) {
+				final int num = nums[nums.length - cnt];
+				for (int k = 0; k < res.size() / factor; ++k) {
+					List<Integer> list = res.get(k * factor);
+					int row = 0;
+					for (int i = 0; i < nums.length; ++i) {
+						if (list.get(i) == Integer.MIN_VALUE) {
+							for (int j = 0; j < factor / cnt; ++j, ++row) {
+								res.get(k * factor + row).set(i, num);
+							}
+						}
+					}
+				}
+				factor /= cnt;
+				--cnt;
 			}
 		}
 		return res;
 	}
 
-	public void nextPermutation(Integer[] nums) {
-		int i = nums.length - 2;
-		for (; i >= 0; --i) {
-			if (nums[i + 1] > nums[i]) {
-				break;
-			}
-		}
-		if (i == -1) {
-			_reverse(nums, 0, nums.length - 1);
-		} else {
-			int lo = i + 1, hi = nums.length - 1, pos = i + 1;
-			while (lo <= hi) {
-				int mid = lo + ((hi - lo) >> 1);
-				if (nums[i].compareTo(nums[mid]) < 0) {
-					pos = mid;
-					lo = mid + 1;
-				} else {
-					hi = mid - 1;
-				}
-			}
-			_swp(nums, i, pos);
-			_reverse(nums, i + 1, nums.length - 1);
-		}
-	}
+	static public class Test {
+		static private Permutations _solution = new Permutations();
 
-	private void _reverse(Integer[] arr, int start, int end) {
-		while (start < end) {
-			_swp(arr, start++, end--);
+		static public void test(int[] nums) {
+			_solution.permute(nums).forEach(list -> {
+				list.forEach(e -> System.out.print(e + ", "));
+				System.out.println();
+			});
 		}
-	}
 
-	private void _swp(Integer[] arr, int i, int j) {
-		if (i != j) {
-			int tmp = arr[i];
-			arr[i] = arr[j];
-			arr[j] = tmp;
+		static public void randomTest() {
+			int[] nums = {1, 2, 3};
+			test(nums);
 		}
 	}
 }
