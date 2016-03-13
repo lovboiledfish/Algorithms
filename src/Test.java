@@ -1,4 +1,4 @@
-import solutions.FiveMultiplesInterator;
+import solutions.DeleteSubtree;
 
 /**
  * Created by PPlovboiledfish on 10/31/15.
@@ -6,7 +6,7 @@ import solutions.FiveMultiplesInterator;
 public class Test {
     static public void main(String[] args) {
         long startTime = System.nanoTime();
-        FiveMultiplesInterator.Test.randomTest();
+        DeleteSubtree.Test.randomTest();
         System.out.println( "Total Time: " + (System.nanoTime() - startTime) / 1000000 + "ms");
     }
 }
