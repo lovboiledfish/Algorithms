@@ -3,8 +3,8 @@ package solutions;
 import java.util.Stack;
 
 /**
- * TS onsite interview question
- *
+ * TS onsite interview question: delete subtree from a tree array.
+ * <p>
  * Created by feiyi.zhan on 3/12/16.
  */
 
@@ -23,7 +23,7 @@ class TreeNode {
 
 	@Override
 	public String toString() {
-		return isValid? Integer.toString(val) : "NULL";
+		return isValid ? Integer.toString(val) : "NULL";
 	}
 }
 
@@ -60,7 +60,7 @@ public class DeleteSubtree {
 
 	static public class Test {
 		static public void randomTest() {
-			TreeNode[] treeNodes = new TreeNode[] {
+			TreeNode[] treeNodes = new TreeNode[]{
 					new TreeNode(1, -1), new TreeNode(2, 0), new TreeNode(3, 0),
 					new TreeNode(4, 1), new TreeNode(5, 1), new TreeNode(6, 1),
 					new TreeNode(7, 2)
