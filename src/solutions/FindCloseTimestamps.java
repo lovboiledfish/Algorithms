@@ -49,7 +49,7 @@ public class FindCloseTimestamps {
 			float val = it.next();
 			_lock.lock();
 			try {
-				q1.add(val);
+				q1.offer(val);
 				if (!q2.isEmpty()) {
 					while (!q2.isEmpty() && Math.abs(q2.peek() - val) >= 1) {
 						q2.poll();
