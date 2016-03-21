@@ -7,15 +7,7 @@ import com.sun.tools.javac.util.Assert;
  */
 public class PowerOfFour {
 	public boolean isPowerOfFour(int n) {
-		if (n <= 0 || (n & (n - 1)) != 0) {
-			return false;
-		}
-		int cnt = 0;
-		while (n > 0) {
-			n >>= 1;
-			++cnt;
-		}
-		return (cnt & 1) == 1;
+		return n > 0 && (n & (n - 1)) == 0 && (n & 0x5555555555555555L) > 0;
 	}
 
 	static public class Test {
